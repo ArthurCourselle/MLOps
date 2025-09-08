@@ -1,3 +1,4 @@
+import os
 import joblib
 import pandas as pd
 
@@ -6,7 +7,8 @@ from pydantic import BaseModel
 from fastapi.responses import JSONResponse
 
 app = FastAPI()
-model = joblib.load("regression.joblib")
+# model = joblib.load("regression.joblib")
+model = joblib.load(os.path.join(os.path.dirname(__file__), "regression.joblib"))
 
 
 class HouseFeatures(BaseModel):

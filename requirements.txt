@@ -2,5 +2,5 @@ joblib
 pandas
 streamlit
 pydantic
-fastapi
-sklearn
+fastapi[standard]
+scikit-learn
