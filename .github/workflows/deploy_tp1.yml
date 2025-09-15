@@ -40,4 +40,4 @@ jobs:
             docker pull ghcr.io/${{ github.repository }}:latest
             docker stop mlops-app || true
             docker rm mlops-app || true
-            docker run -d --name mlops-app -p 80:80 ghcr.io/${{ github.repository }}:latest
+            docker run -d --name mlops-app -p 80:80 ${{ env.IMAGE_NAME }}:latest
