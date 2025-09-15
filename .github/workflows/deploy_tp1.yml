@@ -12,8 +12,6 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # env:
-    #   IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/mlops
 
     steps:
       - uses: actions/checkout@v3
@@ -32,15 +30,14 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
 
-      # - name: deploy
-      #   uses: appleboy/ssh-action@v1.0.0
-      #   with:
-      #     host: ${{ secrets.VM_HOST }}
-      #     username: ${{ secrets.VM_USER }}
-      #     key: ${{ secrets.VM_SSH_KEY }}
-      #     script: |
-      #       docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-      #       docker pull ghcr.io/${{ github.repository }}:latest
-      #       docker stop mlops-app || true
-      #       docker rm mlops-app || true
-      #       docker run -d --name mlops-app -p 80:80 ghcr.io/${{ github.repository }}:latest
+      - uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          password: ${{ secrets.VM_PASSWORD }}
+          script: |
+            docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
+            docker pull ghcr.io/${{ github.repository }}:latest
+            docker stop mlops-app || true
+            docker rm mlops-app || true
+            docker run -d --name mlops-app -p 80:80 ghcr.io/${{ github.repository }}:latest
