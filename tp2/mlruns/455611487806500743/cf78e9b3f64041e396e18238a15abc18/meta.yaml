@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/455611487806500743/cf78e9b3f64041e396e18238a15abc18/artifacts
+end_time: 1757967756922
+entry_point_name: ''
+experiment_id: '455611487806500743'
+lifecycle_stage: active
+run_id: cf78e9b3f64041e396e18238a15abc18
+run_name: honorable-bee-663
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757967755691
+status: 3
+tags: []
+user_id: acours

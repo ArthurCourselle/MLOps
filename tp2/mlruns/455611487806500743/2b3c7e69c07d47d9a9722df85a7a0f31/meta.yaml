@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/455611487806500743/2b3c7e69c07d47d9a9722df85a7a0f31/artifacts
+end_time: 1757967739181
+entry_point_name: ''
+experiment_id: '455611487806500743'
+lifecycle_stage: active
+run_id: 2b3c7e69c07d47d9a9722df85a7a0f31
+run_name: invincible-kite-917
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1757967737929
+status: 3
+tags: []
+user_id: acours

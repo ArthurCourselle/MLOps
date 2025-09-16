@@ -1,0 +1,28 @@
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    container_name: mlflow
+    ports:
+      - "8080:8080"
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 8080
+      --backend-store-uri /mlflow/mlruns
+      --artifacts-destination /mlflow/mlartifacts
+      --serve-artifacts
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+      - ./mlartifacts:/mlflow/mlartifacts
+
+  model-service:
+    build: .
+    container_name: model-service
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:8080
+      - MODEL_NAME=tracking-quickstart
+      - MODEL_VERSION=1
+    depends_on:
+      - mlflow
